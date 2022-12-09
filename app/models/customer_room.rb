@@ -1,0 +1,2 @@
+class CustomerRoom < ApplicationRecord
+end
