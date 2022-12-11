@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to =>"homes#top"
     get "home/about"=>"homes#about"
-    resources :posts, only: [:index,:show,:edit,:create,:destroy,:update] do
+    resources :posts, only: [:new, :index, :show, :edit, :create, :destroy, :update] do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
