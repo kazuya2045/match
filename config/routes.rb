@@ -16,14 +16,20 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
+
     resources :customers, only: [:index,:show,:edit,:update] do
       resource :relationships, only: [:create, :destroy]
   	  get 'followings' => 'relationships#followings', as: 'followings'
   	  get 'followers' => 'relationships#followers', as: 'followers'
     end
-    get '/search', to: 'searches#search'
+    get '/search_result', to: 'searches#search_result'
     resources :chats, only: [:show, :create]
   end
+
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+  end
+
   namespace :admin do
     root :to =>"homes#top"
     resources :customers, only: [:index, :show, :destroy]
