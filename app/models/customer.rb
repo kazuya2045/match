@@ -15,6 +15,9 @@ class Customer < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  has_many :customer_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
