@@ -1,19 +1,32 @@
-<div class="text-center">
+<div class="container">
   <h1 id="room" data-room="<%= @room.id %>" data-customer="<%= current_customer.id %>"><%= @customer.name %> さんとのチャット</h1>
-  <div class="message">
+  <div class="message row">
     <% @chats.each do |chat| %>
-      <% if chat.customer_id == current_customer.id %>
-        <p style="text-align: right;"><%= chat.message %></p>
-      <% else %>
-        <p style="text-align: left;"><%= chat.message %></p>
+      <% chat_customer = chat.customer %>
+      <% if chat.message.present? && chat_customer.id == current_customer.id %>
+        <div class="col-2 text-right"><%= image_tag chat_customer.get_profile_image, size: '50x50' %></div>
+        <div class="col-8">
+          <div class="my-3 arrow_box_right"><p style="word-break:break-all"><%= chat.message %><p></div>
+        </div>
+        <div class="col-2"></div>
+      <% elsif chat.message.present? %>
+        <div class="offset-2 col-8">
+          <div class="my-3 arrow_box_left"><p style="word-break:break-all"><%= chat.message %><p></div>
+        </div>
+        <div class="col-1"><%= image_tag chat_customer.get_profile_image, size: '50x50' %></div>
+        <div class="col-1"></div>
       <% end %>
     <% end %>
   </div>
-  <div class="errors">
-    <%= render "layouts/errors", obj: @chat %>
+  <div class="row mb-4">
+    <div class="offset-sm-1 col-sm-9">
+      <div class="errors">
+        <%= render "layouts/errors", obj: @chat %>
+      </div>
+      <%= form_with model: @chat, data: {remote: true} do |f| %>
+        <%= f.text_field :message, class: 'form-control', placeholder: "入力してください" %>
+        <%= f.hidden_field :room_id %>
+      <% end %>
+    </div>
   </div>
-  <%= form_with model: @chat, data: {remote: true} do |f| %>
-    <%= f.text_field :message, class: 'form-control'%>
-    <%= f.hidden_field :room_id %>
-  <% end %>
 </div>
