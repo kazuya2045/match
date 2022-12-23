@@ -25,16 +25,16 @@
        <td><%= post.personnom %></td>
        <td><%= post.base %></td>
        <td>
-         <% if @post.favorited_by?(current_customer) %>
+         <% if post.favorited_by?(current_customer) %>
               <p>
                 <%= link_to post_favorites_path(post), method: :delete do %>
-                  ♥<%= @post.favorites.count %>
+                  ♥<%= post.favorites.count %>
                 <% end %>
               </p>
             <% else %>
               <p>
                 <%= link_to post_favorites_path(post), method: :post do %>
-                  ♡<%= @post.favorites.count %>
+                  ♡<%= post.favorites.count %>
                 <% end %>
               </p>
             <% end %>

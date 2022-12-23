@@ -6,9 +6,9 @@
       <%= render 'public/customers/info', customer: @post.customer %>
     </div>
     <div class='col-md-8 offset-md-1'>
-  		<h2>投稿詳細</h2>
-  		<table class='table'>
-  		  <tr>
+      <h2>投稿詳細</h2>
+      <table class='table'>
+        <tr>
           <td><%= link_to(@post.customer) do %>
             <%= image_tag @post.customer.get_profile_image, size:"100x100" %><br>
             <%= @post.customer.name %>
@@ -34,7 +34,6 @@
         </tr>
       </table>
       <div>
-        <p>コメント件数：<%= @post.post_comments.count %></p>
         <table class='table'>
           <% @post.post_comments.each do |post_comment| %>
             <tr>
@@ -51,7 +50,7 @@
       </div>
       <div>
         <%= form_with model: [@post, @post_comment] do |f| %>
-          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100 comment-textarea" %>
+          <%= f.text_area :comment, rows: '5', placeholder: "チーム詳細をここに記載", class: "w-100 comment-textarea" %>
           <%= f.submit "送信する" %>
         <% end %>
       </div>

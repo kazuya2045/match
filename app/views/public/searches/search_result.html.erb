@@ -1,7 +1,7 @@
 <h2>検索結果</h2>
 
 <table class="table table-hover table-inverse">
-  <!--検索対象モデルがCustomerの時 -->
+  <%#検索対象モデルがCustomerの時%>
   <% if @range == "Customer" %>
     <tbody>
       <% @customers.each do |customer| %>
@@ -11,7 +11,7 @@
       <% end %>
     </tbody>
   <% else %>
-    <!--検索対象モデルがCustomerではない時(= 検索対象モデルがPostの時) -->
+    <%#検索対象モデルがCustomerではない時(= 検索対象モデルがPostの時)%>
     <tbody>
       <% @posts.each do |post| %>
         <tr>

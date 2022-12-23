@@ -1,14 +1,17 @@
 <div class="container">
+  <%#誰とのチャットルームなのか%>
   <h1 id="room" data-room="<%= @room.id %>" data-customer="<%= current_customer.id %>"><%= @customer.name %> さんとのチャット</h1>
   <div class="message row">
     <% @chats.each do |chat| %>
       <% chat_customer = chat.customer %>
+      <%#ログインユーザ関係%>
       <% if chat.message.present? && chat_customer.id == current_customer.id %>
         <div class="col-2 text-right"><%= image_tag chat_customer.get_profile_image, size: '50x50' %></div>
         <div class="col-8">
           <div class="my-3 arrow_box_right"><p style="word-break:break-all"><%= chat.message %><p></div>
         </div>
         <div class="col-2"></div>
+        <%#チャット相手%>
       <% elsif chat.message.present? %>
         <div class="offset-2 col-8">
           <div class="my-3 arrow_box_left"><p style="word-break:break-all"><%= chat.message %><p></div>
@@ -23,6 +26,7 @@
       <div class="errors">
         <%= render "layouts/errors", obj: @chat %>
       </div>
+      <%#フォーム関係%>
       <%= form_with model: @chat, data: {remote: true} do |f| %>
         <%= f.text_field :message, class: 'form-control', placeholder: "入力してください" %>
         <%= f.hidden_field :room_id %>

@@ -1,18 +1,20 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_correct_customer, only: [:edit,:update]
+  before_action :ensure_correct_customer, only: [:update]
   before_action :ensure_guest_customer, only: [:edit]
 
   def show
+    #選択した会員の情報
     @customer = Customer.find(params[:id])
+    #会員が投稿したもの
     @posts = @customer.posts
-    @post = Post.new
   end
 
   def index
+    #ログインしている会員
     @customer = current_customer
+    #会員すべて
     @customers = Customer.all
-    @post = Post.new
   end
 
   def edit
@@ -22,8 +24,9 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
+    #会員のアップデート
     if @customer.update(customer_params)
-     flash[:notice] = "You have updated user successfully."
+    #遷移先
     redirect_to customer_path(@customer.id)
     else
      render :edit
@@ -44,13 +47,17 @@ class Public::CustomersController < ApplicationController
   end
 
   def is_matching_login_customer
+    #会員情報を取り出し
     customer = Customer.find(params[:id])
+    #ログインしている会員かどうか
     login_customer = current_customer
+    #ログインしている会員じゃないとき
     if(customer.id != login_customer.id)
+      #遷移先
       redirect_to customer_path(current_customer.id)
     end
   end
-
+  #ゲストログイン関係
   def ensure_guest_customer
     @customer = Customer.find(params[:id])
     if @customer.name == "guestuser"

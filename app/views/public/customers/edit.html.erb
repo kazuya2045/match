@@ -5,11 +5,13 @@
     <h2>会員情報編集</h2>
     <%= form_with model:@customer, local:true do |f| %>
       <%= render 'layouts/errors', obj: @customer %>
+      <%#名前%>
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: "name" %>
       </div>
-     <div class="form-group">
+      <div class="form-group">
+      <%#プロフィール画像%>
         <%= f.label :image %>
         <%= f.file_field :profile_image, class: "form-control-file customer_image", accept: 'image/*' %>
       </div>

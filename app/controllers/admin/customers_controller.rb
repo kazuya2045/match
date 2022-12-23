@@ -1,14 +1,14 @@
 class Admin::CustomersController < ApplicationController
 
   def index
-    @customer = current_customer
+    #会員全員の情報
     @customers = Customer.all
-    @post = Post.new
   end
 
   def show
+    #選択した会員の情報
     @customer = Customer.find(params[:id])
+    #選択した会員が投稿したもの一覧
     @posts = @customer.posts
-    @post = Post.new
   end
 end

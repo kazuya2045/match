@@ -12,7 +12,9 @@
         <tbody>
           <% @customers.each do |customer| %>
             <tr>
+              <%#会員が設定した画像%>
               <td><%= image_tag customer.get_profile_image, size: '50x50' %></td>
+              <%#会員の名前%>
               <td><%= customer.name %></td>
               <td>フォロー数: <%= customer.followings.count %></td>
               <td>フォロワー数: <%= customer.followers.count %></td>
