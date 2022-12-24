@@ -29,7 +29,7 @@
           <% @posts.each do |post| %>
             <tr>
               <%#投稿のチーム名%>
-              <td><%= link_to post.team_name,post_path(post) %></td>
+              <td><%= post.team_name %></td>
               <%#投稿の人数%>
               <td><%= post.personnom %></td>
               <%#投稿の拠点%>

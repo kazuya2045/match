@@ -40,7 +40,8 @@ class Public::ChatsController < ApplicationController
     params.require(:chat).permit(:message, :room_id)
   end
 
-　#相互フォローでないとDM機能が使えないようにする。
+
+
   def reject_non_related
     customer = Customer.find(params[:id])
     unless current_customer.following?(customer) && customer.following?(current_customer)

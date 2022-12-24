@@ -16,6 +16,7 @@
           </td>
           <td><%= link_to @post.team_name, @post %></td>
           <td><%= @post.personnom %>人</td>
+          <td><%= @post.base %></td>
             <% if @post.customer == current_customer %>
               <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
               <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
