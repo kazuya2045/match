@@ -19,7 +19,13 @@
 - いつもとは違うチームと対戦して実力を伸ばしたい時
 
 ## 設計書
-<...>
+- テーブル定義書：https://docs.google.com/spreadsheets/d/1SHcT_WC9dJB9wTBgZhgKBqde9XoQrNEcSQeGagUMBsU/edit?usp=sharing
+- ER図：https://drive.google.com/file/d/1FtQsNm7RPzKtwC8VVoA7AsnllSliSMGa/view?usp=sharing
+- ワイヤーフレーム：https://drive.google.com/file/d/17OXkeaIiyPjzHqWbv9b0efem0xyBIc0g/view?usp=sharing
+- UI Flows：https://drive.google.com/file/d/1EFJphXWzDaWzMMOpxU0xfIBFh2Jiyfm2/view?usp=sharing
+- アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/1Lpw-ZjCfTxMCfiyI0oinZQhTXJipgWryBbk1CuFA_bw/edit?usp=sharing
+- WBS：https://docs.google.com/spreadsheets/d/1Bg71ykDxZ-ujp6Zil0gm5kxs-vNEyIgUhFvZWRQQiH4/edit?usp=sharing
+- テスト仕様書：https://docs.google.com/spreadsheets/d/1y3mr3ncHKVYSXtcsYjtzH2vXlIHYq4FI/edit?usp=sharing&ouid=108026764559776925659&rtpof=true&sd=true
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -29,4 +35,9 @@
 - IDE：Cloud9
 
 ## 使用素材
--
+- いらすとやのフリー素材を使用しています。
+
+## 管理者側の機能について
+- 管理者から会員削除機能
+- 管理者から投稿削除機能
+上の2点については将来的に実装したいと考えています。
