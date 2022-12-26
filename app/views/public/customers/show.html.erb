@@ -7,45 +7,45 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <h2>投稿一覧</h2>
-         <table class="table">
-    <thead>
-     <tr>
-      <th>チーム名</th>
-      <th>人数</th>
-      <th>拠点</th>
-      <th colspan="3"></th>
-     </tr>
-    </thead>
-    <tbody>
-     <% @posts.each do |post| %>
-      <tr>
-       <td>
-        <%= link_to post.team_name,post_path(post) %>
-       </td>
-       <td><%= post.personnom %></td>
-       <td><%= post.base %></td>
-       <td>
-         <% if post.favorited_by?(current_customer) %>
-              <p>
-                <%= link_to post_favorites_path(post), method: :delete do %>
-                  ♥<%= post.favorites.count %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>チーム名</th>
+            <th>人数</th>
+            <th>拠点</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td>
+                <%= link_to post.team_name,post_path(post) %>
+              </td>
+              <td><%= post.personnom %></td>
+              <td><%= post.base %></td>
+              <td>
+                <% if post.favorited_by?(current_customer) %>
+                  <p>
+                    <%= link_to post_favorites_path(post), method: :delete do %>
+                      ♥<%= post.favorites.count %>
+                    <% end %>
+                  </p>
+                <% else %>
+                  <p>
+                    <%= link_to post_favorites_path(post), method: :post do %>
+                      ♡<%= post.favorites.count %>
+                    <% end %>
+                  </p>
                 <% end %>
-              </p>
-            <% else %>
-              <p>
-                <%= link_to post_favorites_path(post), method: :post do %>
-                  ♡<%= post.favorites.count %>
-                <% end %>
-              </p>
-            <% end %>
-       </td>
-       <td>
-           <p><%= link_to "チーム詳細", post_path(post.id) %></p>
-       </td>
-      </tr>
-     <% end %>
-    </tbody>
-   </table>
+              </td>
+              <td>
+                <p><%= link_to "チーム詳細", post_path(post.id) %></p>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
